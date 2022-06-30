@@ -1,0 +1,52 @@
+
+
+search tb aiot 1126ce
+
+https://www.96boards.org/documentation/consumer/tb-96aiot-1126ce/downloads/
+
+    under one-drive  Shared > TB-96AIoT-1126CE > sdk-codes  :  look into the README.md file: 
+    https://onedrive.live.com/?authkey=%21APNg94CWXhYtJHE&cid=D7BA57076759051A&id=D7BA57076759051A%213096&parId=D7BA57076759051A%213084&o=OneUp
+
+    RERADME.md:
+        repo init --repo-url=https://gitlab.com/bearkey-tools/repo.git -u https://gitlab.com/bearkey-linux/manifests.git --no-clone-bundle
+
+pull the code: 
+
+  run the repo init, then repo sync -n -j1 . it took 15m+ to pull the whole data of 14G off gitlab.
+  copy the directory of 14G , it took 3m45s.
+  run the repo sync -l -j1, it took  3m22s. the check-out takes about 13G on disk. 
+
+  check a few repos. most were updated in Jan 2021, or latest Apr 2021. 
+  kernel and device/rockchip are on bearkey branch. kernel was updated Dec 2021.
+
+build the code: 
+
+  build, select the bearkey 1126ce build. build started at utc 21:06, finished at utc 23:54. 
+  the build used 29G more disk space.
+
+taobao seller: 
+
+  https://www.taobao.com/list/item/640837593366.htm?spm=a21wu.10013406.taglist-content.3
+  seller: bearkey official shop
+  brand:  96boards 
+
+https://www.96boards.org/documentation/consumer/tb-96aiot-1126ce/hardware-docs/
+
+  hardware user manual pdf file.
+  schematic pdf. 
+
+https://www.96boards.org/product/tb-96aiot-1126ce/
+
+  github: https://github.com/96boards/documentation/
+
+
+
+search rv1126ce
+
+https://www.bearkey.net/thread-4-1-1.html
+  baidu net drive, downlaod gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf.tar.gz 
+  or gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf.tar.gz
+  download user guides.
+
+
+
