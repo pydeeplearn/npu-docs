@@ -1,0 +1,59 @@
+
+
+http://opensource.rock-chips.com/wiki_Special:AllPages
+
+
+http://opensource.rock-chips.com/wiki_Rockusb
+
+    Rockusb is a vendor specific USB class from Rockchip, for firmware download.
+
+  modes
+
+    maskrom mode, no firmware found on chip, target runs maskrom rockusb driver. 
+    usbplug mode, runs a firmware for usb download with rkdeveloptool db command, 
+                  with rockusb driver inside. dram already initialized in this mode.
+    miniLoader rockusb mode, target runs miniloader rockusb driver.
+    uboot rockusb mode.
+
+  to get into maskrom mode: short signal lines or clock lines to ground, 
+                            or run "reboot bootrom" command, or erase media. 
+
+  maskrom commands: db, ul, uf. 
+
+    db: init dram and run into usbplug with rockusb driver. 
+    ul: db and download idbloader into emmc 0x40.
+    uf: db and and download image in update.img into emmc.
+
+  miniloader mode: 
+
+    Rockchip legacy image(with U-Boot 2014.10) using miniloader as default USB firmware 
+    upgrade path, enter this mode with:
+
+        - Press 'recovery' or 'volumn +' key pressed when power up;
+        - there is no next stage firmware found.
+              For example, erase bootable data in U-Boot:
+                  mmc erase 0x4000 0x2000
+        - run "reboot loader" command in kernel.
+
+    NOTE: In this miniloader rockusb, the offset for rkdeveloptool is not the physical address,
+    the physical offset 0~0x2000 is no able to write by wl command;
+
+    The physical address of  offset in wl command is the offset plus 0x2000, eg:
+    "rkdeveloptool wl 0x2000 uboot.img" will write uboot.img to emmc 0x4000 address.
+
+  u-boot rockusb mode:
+
+    enter this mode with: 
+        - Press 'recovery' or 'volumn +' key pressed when power up;
+        - Run "reboot loader" command in kernel;
+        - Start with cmd in u-boot shell
+              rockusb 0 mmc 0
+
+  usb vid/pid for rockusb
+
+    rockchip vendor id is 0x2207, and product id are different: 
+        rk3288: 0x320a
+        rk3328: 0x320c
+        rk3399: 0x330c
+
+
