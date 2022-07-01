@@ -187,4 +187,17 @@ run example
 
     python test.py
 
+  set path: 
+  find rknn-toolkit installation path
+    pip show rknn-toolkit
+
+  add rknn-toolkit two dll paths: 
+    set "PATH=%PATH%;D:\penv36rknn\lib\site-packages\rknn\api\lib\hardware\LION\Windows_x64"
+    set "PATH=%PATH%;D:\penv36rknn\lib\site-packages\rknn\api\lib\hardware\PUMA\Windows_x64"
+
+  add adb path: 
+    set "PATH=%PATH%;D:\platform-tools_r30.0.3-windows\platform-tools\"
+
+  it won't be able to work with adb on target hardware as only ntb mode is supported on windows. 
+
 
