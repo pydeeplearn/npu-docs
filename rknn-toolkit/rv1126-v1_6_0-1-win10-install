@@ -1,0 +1,66 @@
+
+
+rknn-toolkit quick start 1.6.0
+
+  usb driver, the doc says
+    ntb interface, usb id 2207 0018, zadig-2.4.exe install WinUSB driver. 
+    after installation, USB/NTB Interface shows no exclamation mark.
+  found initial loader device on windows device manager: 
+        2207/0006 adb interfaces x2 not connected, 
+        2207/110B rockusb device x1 connected, and many not connected.
+  usb driver, actually see and do: this does not work, cannot connect from PC
+    adb interface, usb id 2207 0006, WinUSB v11.0.0.0. 
+    use zigdag to downgrade to v6.1.7600.16385
+    need reboot in the middle to finish the driver install
+
+  install failed due to protobuf>=3.6.1 on 4.21.0
+  fix by installing the versions in user guide later
+
+    pip install tensorflow=1.14.0
+
+  from v1.6.0 user guide: 
+  the doc says tensorflow==1.16.3, though will install 1.14.0 later
+
+    pip install protobuf==3.11.2
+    pip install numpy==1.16.3 scipy==1.3.0 h5py==2.8.0 networkx==1.11 flatbuffers==1.10
+    pip install ply==3.11 requests==2.22.0
+
+  come back to the quick start doc
+  tensorboard 1.14.0 requires setuptools>=41.0.0 but you have 40.6.2, despite it installed ok
+  the futurize.exe and pasteurize.exe are in ~/AppData/Roaming/Python/Python36/Scripts, which is not on path
+
+    pip install tensorflow==1.14.0
+    pip install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html --user
+    pip install mxnet==1.5.0
+
+
+  continue 
+  install from local directory rknn-toolkit/packages/required-packages-for-win-python36/
+
+    pip install lmdb-0.95-cp36-cp36m-win_amd64.whl
+
+  install from rknn-toolkit/packages/
+  it uninstalls requests-2.18.4 lmdb-0.95 and replaces with requests-2.22.0 lmdb-0.93
+  the requests-2.18.4 was brought in and required by mxnet-1.5.0
+
+    pip install rknn_toolkit-1.6.0-cp36-cp36m-win_amd64.whl
+
+  install opencv-python and gluoncv
+  install visual studio 17 2022 first so opencv-python 4.6.0.66 can build
+  install cmake-3.23.2-windows-x86_64.msi
+  still cannot build. try 3.3.0.10 , ok.
+  gluoncv 0.11.0. matplotlib 3.3.4 requires pillow>=6.2.0 but you'll have pillow 5.3.0 which is incompatible
+
+    pip install opencv-python==3.3.0.10
+    pip install gluoncv
+
+  windows set envrionment so that adb is in the path
+
+    set "PATH=%PATH%;D:\platform-tools_r30.0.3-windows\platform-tools\"
+
+
+run example
+
+  adb device: c42a5e9c6e88a93
+
+
