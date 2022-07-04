@@ -18,6 +18,9 @@ def graphdef_to_pbtxt(filename):
     with open('protobuf.txt', 'w') as fp:
         fp.write(str(graph_def))
     
-graphdef_to_pbtxt('saved_model.pb')
+##graphdef_to_pbtxt('saved_model.pb')
+graphdef_to_pbtxt('frozen_inference_graph.pb')
+##graphdef_to_pbtxt('tflite_graph.pb')
 
+print("ok")
 

@@ -56,4 +56,25 @@ https://stackoverflow.com/questions/56551383/how-to-generate-pbtxt-file-from-a-p
 https://stackoverflow.com/questions/45823662/can-we-use-pbtxt-instead-of-pb-file-in-using-tensor-flow-model
   convert pbtxt to pb with ckpt
 
+http://www.markharvey.info/ml/import_pb/import_pb.html
+  view a graphDef .pb or .pbtxt file with TensorBoard
+  see ref-pb-pbtxt-view.py
+
+https://chromium.googlesource.com/external/github.com/tensorflow/tensorflow/+/r0.10/tensorflow/g3doc/how_tos/tool_developers/index.md
+  a tool developers guide to tensorflow model files
+
+  GraphDef: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/core/framework/graph.proto
+  script example: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/graph_metrics.py
+        graph_def = graph_pb2.GraphDef()
+        with open(FLAGS.graph, "rb") as f:
+          if FLAGS.input_binary:
+            graph_def.ParseFromString(f.read)
+          else:
+            text_format.Merge(f.read(), graph_def)
+
+  Nodes: code: for node in graph_dev.node
+
+  Freezing: 
+  script: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py
+
 
