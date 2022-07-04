@@ -1,0 +1,59 @@
+
+
+research / object_detection / tf2 / zoo: 
+
+https://github.com/tensorflow/models/tree/master/research/object_detection
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2.md
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md
+
+  SSD MobileNet v2 320x320: 
+  http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_320x320_coco17_tpu-8.tar.gz
+
+  SSD MobileNet v1 FPN 640x640
+  http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v1_fpn_640x640_coco17_tpu-8.tar.gz
+
+
+research / object_detection / tf1 / zoo: 
+
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1.md
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md
+  frozen inference graphs are generated using the v1.12.0 release of tensorflow. 
+  can be regenerated using your current version of tensorflow by re-running the exporter. 
+  exporter: ...
+
+  ssd_mobilenet_v1_coco
+  http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2018_01_28.tar.gz
+
+  the 2017-11-17 version
+  http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2017_11_17.tar.gz
+        -- this is the model used by rknn_toolkit 1.6.0: 
+        $ ls -l ssd_mobilenet_v1_coco_2017_11_17/frozen_inference_graph.pb
+        -rw-r-----+   29112121 Nov 17  2017 ssd_mobilenet_v1_coco_2017_11_17/frozen_inference_graph.pb
+
+  ssd_mobiledet_cpu_coco
+  http://download.tensorflow.org/models/object_detection/ssdlite_mobiledet_cpu_320x320_coco_2020_05_19.tar.gz
+      -- this contains the .pbtxt graph
+
+
+
+search tensorflow pbtxt file
+
+https://stackoverflow.com/questions/57007707/failed-to-convert-tensorflow-frozen-graph-to-pbtxt-file
+  convert a tf model by cv for cv to infer.
+  for tf2 converting pb to pbtxt, see ref-pb-to-pbtxt.py
+        -- this is used to convert:
+                fail: ssd_mobilenet_v2_320x320_coco17_tpu-8/saved_model/saved_model.pb
+                fail: ssd_mobilenet_v1_coco_2017_11_17/saved_model/saved_model.pb
+                ok:   ssd_mobilenet_v1_coco_2017_11_17/frozen_inference_graph.pb
+                ok:   ssdlite_mobiledet_cpu_320x320_coco_2020_05_19/tflite_graph.pb
+                ok:   ssd_mobilenet_v1_coco_2018_01_28/frozen_inference_graph.pb
+
+https://stackoverflow.com/questions/56551383/how-to-generate-pbtxt-file-from-a-pb-file-for-dnn-module-in-opencv
+  convert a tf model by cv for cv to infer (not work on cv2 opencv-python 3.3.0.10)
+    import cv2 
+    cv2.dnn.writeTextGraph('FrozenMaster.pb', 'graph.pbtxt')
+
+https://stackoverflow.com/questions/45823662/can-we-use-pbtxt-instead-of-pb-file-in-using-tensor-flow-model
+  convert pbtxt to pb with ckpt
+
+
